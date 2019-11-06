@@ -1,0 +1,14 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: setup-docker
+      uses: docker-practice/actions-setup-docker@0.0.1
+    - run: docker build -t IntroToDocker .
