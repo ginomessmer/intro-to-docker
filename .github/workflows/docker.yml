@@ -1,0 +1,15 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - run: docker build -t introtodocker .
+    - run: docker login docker.pkg.github.com -u ginomessmer -p ${{ secrets.GITHUB_TOKEN }}
+    - run: docker tag introtodocker docker.pkg.github.com/ginomessmer/intro-to-docker/app:latest
+    - run: docker push docker.pkg.github.com/ginomessmer/intro-to-docker/app:latest
