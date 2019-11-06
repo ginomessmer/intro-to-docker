@@ -9,6 +9,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: setup-docker
-      uses: docker-practice/actions-setup-docker@0.0.1
     - run: docker build -t introtodocker .
+    - run: docker tag introtodocker docker.pkg.github.com/ginomessmer/intro-to-docker/app:latest
+    - run: docker push docker.pkg.github.com/ginomessmer/intro-to-docker/app:latest
