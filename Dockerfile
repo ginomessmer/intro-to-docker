@@ -7,7 +7,7 @@ RUN npm install -g @angular/cli
 
 COPY . .
 
-RUN npm install --production --silent
+RUN npm ci
 RUN ng build
 
 EXPOSE 4200
