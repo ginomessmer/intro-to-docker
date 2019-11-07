@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+  wordpress:
+    image: wordpress
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: dev
+      WORDPRESS_DB_PASSWORD: verysecret
+      WORDPRESS_DB_NAME: wpblog
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - default
+    ports:
+      - "80:80"
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: wpblog
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: verysecret
+      MYSQL_RANDOM_ROOT_PASSWORD: "1"
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - default
+
+volumes:
+  wordpress:
+  db:
